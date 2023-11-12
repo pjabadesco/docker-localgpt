@@ -1,0 +1,35 @@
+version: "3.4"
+services:
+
+  localgpt:
+    image: pjabadesco/docker-localgpt:0.01
+    tty: true           # <-- This option
+    ulimits:
+      memlock: -1
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - 5110:5110 # webUI port
+    environment:
+      - TZ=Asia/Manila
+      - PUID=0
+      - PGID=0
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - models:/home/models
+      - SOURCE_DOCUMENTS:/home/SOURCE_DOCUMENTS
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+          size: 1000000000 # ~1gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['1']
+              capabilities: [gpu]
+volumes:
+  models:
+  SOURCE_DOCUMENTS:
