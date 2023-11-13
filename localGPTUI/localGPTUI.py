@@ -12,7 +12,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 app = Flask(__name__)
 app.secret_key = "LeafmanZSecretKey"
 
-API_HOST = "http://localhost:5110/api"
+API_HOST = "http://localgpt:5110/api"
 
 
 # PAGES #

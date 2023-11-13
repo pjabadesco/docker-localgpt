@@ -60,9 +60,7 @@ RUN CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install llama-cpp-python --
 # RUN cd sqlite-autoconf-3390000 && ./configure && make && make install
 # RUN pip install --upgrade --force-reinstall pysqlite3-binary 
 
-# ENV device_type=cpu
-# RUN chmod 777 /SOURCE_DOCUMENTS/*
-# RUN --mount=type=cache,target=/root/.cache python ingest.py --device_type $device_type
+RUN --mount=type=cache,target=/root/.cache python ingest.py --device_type cpu
 # RUN python ingest.py --device_type $device_type
 # COPY . .
 ENV device_type=cuda
