@@ -3,14 +3,14 @@ services:
 
   localgptUI:
     container_name: localgptUI
-    image: pjabadesco/docker-localgpt:0.09
+    image: pjabadesco/docker-localgpt:0.10
     tty: true           # <-- This option
     ulimits:
       memlock: -1
     restart: unless-stopped
     network_mode: bridge
     ports:
-      - 5111:5111 # webUI port
+      - 8111:5111 # webUI port
     environment:
       - TZ=Asia/Manila
       - PUID=0
@@ -31,4 +31,4 @@ services:
             - driver: nvidia
               device_ids: ['1']
               capabilities: [gpu]
-    entrypoint: python localGPTUI/localGPT_UI.py
+    entrypoint: python localGPTUI/localGPTUI.py
