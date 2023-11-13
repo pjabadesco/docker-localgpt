@@ -19,7 +19,6 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /home/imgcorp/localgpt/models:/home/models
-      - /home/imgcorp/localgpt:/home/SOURCE_DOCUMENTS
       - type: tmpfs
         target: /dev/shm
         tmpfs:

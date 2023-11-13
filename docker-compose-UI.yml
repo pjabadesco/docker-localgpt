@@ -10,7 +10,9 @@ services:
     restart: unless-stopped
     network_mode: bridge
     ports:
-      - 8111:5111 # webUI port
+      - 5111:5111 # webUI port
+    extra_hosts:
+      - "localgpt:192.168.20.201"      
     environment:
       - TZ=Asia/Manila
       - PUID=0
@@ -31,4 +33,4 @@ services:
             - driver: nvidia
               device_ids: ['1']
               capabilities: [gpu]
-    entrypoint: python localGPTUI/localGPTUI.py
+    entrypoint: python localGPTUI/localGPTUI.py --host 0.0.0.0

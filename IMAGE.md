@@ -4,10 +4,10 @@ docker-compose build
 
 docker buildx build --platform=linux/amd64 --tag=docker-localgpt:latest --load .
 
-docker tag docker-localgpt:latest pjabadesco/docker-localgpt:0.10
-docker push pjabadesco/docker-localgpt:0.10
+docker tag docker-localgpt:latest pjabadesco/docker-localgpt:0.11
+docker push pjabadesco/docker-localgpt:0.11
 
-docker tag pjabadesco/docker-localgpt:0.10 pjabadesco/docker-localgpt:latest
+docker tag pjabadesco/docker-localgpt:0.11 pjabadesco/docker-localgpt:latest
 docker push pjabadesco/docker-localgpt:latest
 
 docker tag pjabadesco/docker-localgpt:latest ghcr.io/pjabadesco/docker-localgpt:latest
